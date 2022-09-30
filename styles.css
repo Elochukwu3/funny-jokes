@@ -45,7 +45,7 @@ body {
 #page-Wrapper p {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: hotpink;
+  color: red;
 }
 #page-Wrapper .jokes-container {
   display: flex;

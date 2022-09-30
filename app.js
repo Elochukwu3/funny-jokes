@@ -25,25 +25,22 @@ const jokeDelivery = document.querySelector(".joke-delivery");
 const loaderGif = document.querySelector('.loader');
 const jokeStatus = document.querySelector('.joke-status');
 
-jokeBtn.addEventListener('click', () => {
+jokeBtn.addEventListener('click', async() => {
   loaderGif.style.display = "block";
-  fetch(urlApi) //fatch the data
-    .then((res) => {
-      return res.json(); //convert the res to json
-    })
-    .then(({joke, category, safe, setup, delivery, type}) => {
-      //the converted data
-      
-      loaderGif.style.display = "none";
-      if(type == "single") {
-        jokeDelivery.textContent =joke;
-        categoryDisplay.textContent = category;
-        jokeStatus.textContent = safe;
-        // jokeSetUp.textContent = "";
-      } else {
-        categoryDisplay.textContent = category;
-        jokeFlags.textContent = setup;
-        jokeDelivery.textContent = delivery;
-      }
-    });
+
+  //fetch the data
+  const res = await fetch(urlApi);
+  const data = await res.json();
+  const { joke, category, safe, setup, delivery, type } = data;
+  loaderGif.style.display = "none";
+  if (type == "single") {
+    jokeDelivery.textContent = joke;
+    categoryDisplay.textContent = category;
+    jokeStatus.textContent = safe;
+  } else {
+    categoryDisplay.textContent = category;
+    jokeFlags.textContent = setup;
+    jokeDelivery.textContent = delivery;
+  }
+    
 });
