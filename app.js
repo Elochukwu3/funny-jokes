@@ -15,7 +15,8 @@ const urlApi =
   <img src="./images/loader_gif_1.gif" class="loader" />
   <button class="joke-btn">Generate Random Jokes</button>
 </div>`;
-const pageCont = document.querySelector(".page-container")
+
+const pageCont = document.querySelector("#page-Wrapper")
 pageCont.innerHTML = bodyContent;
 const category = document.querySelector(".category");
 const jokeBtn = document.querySelector(".joke-btn");
