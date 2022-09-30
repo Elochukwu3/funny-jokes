@@ -18,30 +18,30 @@ const urlApi =
 
 const pageCont = document.querySelector("#page-Wrapper")
 pageCont.innerHTML = bodyContent;
-const category = document.querySelector(".category");
+const categoryDisplay = document.querySelector(".category");
 const jokeBtn = document.querySelector(".joke-btn");
 const jokeSetUp = document.querySelector(".joke-setup");
 const jokeDelivery = document.querySelector(".joke-delivery");
-const loaderGif = document.querySelector(".loader");
-const jokeStatus = document.querySelector(".joke-status");
+const loaderGif = document.querySelector('.loader');
+const jokeStatus = document.querySelector('.joke-status');
 
-jokeBtn.addEventListener("click", () => {
+jokeBtn.addEventListener('click', () => {
   loaderGif.style.display = "block";
   fetch(urlApi) //fatch the data
     .then((res) => {
       return res.json(); //convert the res to json
     })
-    .then(({joke, category, safe, setup, delivery}) => {
+    .then(({joke, category, safe, setup, delivery, type}) => {
       //the converted data
       
       loaderGif.style.display = "none";
-      if (data.type == "single") {
+      if(type == "single") {
         jokeDelivery.textContent =joke;
-        category.textContent = category;
+        categoryDisplay.textContent = category;
         jokeStatus.textContent = safe;
         // jokeSetUp.textContent = "";
       } else {
-        category.textContent = category;
+        categoryDisplay.textContent = category;
         jokeFlags.textContent = setup;
         jokeDelivery.textContent = delivery;
       }
