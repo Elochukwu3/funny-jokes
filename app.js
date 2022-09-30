@@ -31,18 +31,19 @@ jokeBtn.addEventListener("click", () => {
     .then((res) => {
       return res.json(); //convert the res to json
     })
-    .then((data) => {
+    .then(({joke, category, safe, setup, delivery}) => {
       //the converted data
+      
       loaderGif.style.display = "none";
       if (data.type == "single") {
-        jokeDelivery.textContent = data.joke;
-        category.textContent = data.category;
-        jokeStatus.textContent = data.safe;
+        jokeDelivery.textContent =joke;
+        category.textContent = category;
+        jokeStatus.textContent = safe;
         // jokeSetUp.textContent = "";
       } else {
-        category.textContent = data.category;
-        jokeFlags.textContent = data.setup;
-        jokeDelivery.textContent = data.delivery;
+        category.textContent = category;
+        jokeFlags.textContent = setup;
+        jokeDelivery.textContent = delivery;
       }
     });
 });
